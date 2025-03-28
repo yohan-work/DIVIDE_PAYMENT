@@ -1,25 +1,22 @@
 import { supabase } from "@/lib/supabase";
-// import { notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 
-type SharePageProps = {
-  params: {
-    id: string;
-  };
+type Props = {
+  params: { id: string };
 };
 
-export default async function SharePage({ params }: SharePageProps) {
+export const dynamic = "force-dynamic";
+export default async function SharePage({ params }: Props) {
+  const { id } = params;
+
   const { data, error } = await supabase
     .from("receipts")
     .select()
-    .eq("id", params.id)
+    .eq("id", id)
     .single();
 
   if (error || !data) {
-    return (
-      <main className="min-h-screen flex items-center justify-center text-red-500 text-lg">
-        유효하지 않은 공유 링크입니다 😢
-      </main>
-    );
+    notFound();
   }
 
   const persons = data.data as { name: string; amount: number }[];
