@@ -1,10 +1,13 @@
 import { supabase } from "@/lib/supabase";
+// import { notFound } from "next/navigation";
 
-export default async function SharePage({
-  params,
-}: {
-  params: { id: string };
-}) {
+type SharePageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export default async function SharePage({ params }: SharePageProps) {
   const { data, error } = await supabase
     .from("receipts")
     .select()
