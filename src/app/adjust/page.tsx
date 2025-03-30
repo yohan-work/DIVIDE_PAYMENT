@@ -1,14 +1,15 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
 interface Person {
   name: string;
   amount: number;
 }
 
-export default function AdjustPage() {
+// SearchParams를 가져오는 클라이언트 컴포넌트
+function AdjustContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -85,5 +86,14 @@ export default function AdjustPage() {
         다음
       </button>
     </main>
+  );
+}
+
+// 메인 페이지 컴포넌트에서 Suspense 감싸기
+export default function AdjustPage() {
+  return (
+    <Suspense fallback={<div className="p-4 text-center">로딩 중...</div>}>
+      <AdjustContent />
+    </Suspense>
   );
 }
