@@ -1,13 +1,13 @@
 import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 
-type Props = {
-  params: { id: string };
-};
-
 export const dynamic = "force-dynamic";
-export default async function SharePage({ params }: Props) {
-  const { id } = params;
+export default async function SharePage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
   const { data, error } = await supabase
     .from("receipts")
