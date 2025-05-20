@@ -3,6 +3,12 @@
 ## 프로젝트 소개
 영수증을 스캔하고 비용을 나눌 수 있는 웹 서비스입니다. OCR (Tesseract.js)을 사용하여 영수증의 텍스트를 인식하고, 각 항목을 개인별로 분배할 수 있습니다.
 
+## Process
+![pay01](https://github.com/user-attachments/assets/419760ba-9b2c-4287-a510-acaaaedfbd46)
+![pay02](https://github.com/user-attachments/assets/f1c1c65d-6544-4967-94c6-bbdc9c39cf4f)
+![pay03](https://github.com/user-attachments/assets/1734e9b7-0374-49b1-855b-bab7e198f5ea)
+
+
 ## 기술 스택
 - **FE**: React 19, Next.js 15.2.4, TailwindCSS 4
 - **DB**: Supabase
